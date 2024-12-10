@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WSIndexTool": {
+      "commandName": "Project",
+      "commandLineArgs": "-inputxml=D:\\Skills\\Programming\\Wildstar\\EldanToolkitProject\\indexFileList.xml -outputfile=D:\\Skills\\Programming\\Wildstar\\EldanToolkitProject\\OutputFiles\\ClientData.index -indexfile=E:\\Games\\Flat\\WildStar\\Patch_\\ClientData.index"
+    }
+  }
+}
