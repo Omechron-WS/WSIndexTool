@@ -37,11 +37,6 @@ public class Program
 			Console.WriteLine("No input files found!");
 			exit = true;
 		}
-		if (string.IsNullOrEmpty(originalIndexFile))
-		{
-			Console.WriteLine("Original index file not specified!");
-			exit = true;
-		}
 		if (string.IsNullOrEmpty(outputPath))
 		{
 			Console.WriteLine("Output file not specified!");
@@ -54,9 +49,15 @@ public class Program
 
 	public static void CompileIndexFile()
 	{
-		Directory.CreateDirectory(Path.GetDirectoryName(outputPath));
-
-		File.Copy(originalIndexFile, outputPath, true);
+		if (originalIndexFile != null)
+		{
+			Directory.CreateDirectory(Path.GetDirectoryName(outputPath));
+			File.Copy(originalIndexFile, outputPath, true);
+		}
+		else
+		{
+			if (!File.Exists(outputPath)) return;
+		}
 		FileSystem fs = FileSystem.Create(new Progress(), outputPath.Replace(".index", ""), false, null, CancellationToken.None).Result;
 		foreach(var file in inputFiles)
 		{
