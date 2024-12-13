@@ -15,9 +15,9 @@ public class Program
 	{
 		ParseArgs(args);
 
-		originalIndexFile = "";
 		CompileIndexFile();
-		CompileIndexFile();
+		/*originalIndexFile = "";
+		CompileIndexFile();*/
 	}
 
 	public static void ParseArgs(string[] args)
@@ -61,7 +61,7 @@ public class Program
 		FileSystem fs = FileSystem.Create(new Progress(), outputPath.Replace(".index", ""), false, null, CancellationToken.None).Result;
 		foreach(var file in inputFiles)
 		{
-			fs.Write(file.Item1, File.ReadAllBytes(file.Item2), File.GetLastWriteTimeUtc(file.Item2));
+			fs.Write(file.Item1.Replace('\\', '/'), File.ReadAllBytes(file.Item2), File.GetLastWriteTimeUtc(file.Item2));
 		}
 		fs.Dispose();
 		fs.Close(); // these don't do exactly the same thing.
