@@ -49,7 +49,7 @@ public class Program
 
 	public static void CompileIndexFile()
 	{
-		if (originalIndexFile != null)
+		if (!string.IsNullOrWhiteSpace(originalIndexFile))
 		{
 			Directory.CreateDirectory(Path.GetDirectoryName(outputPath));
 			File.Copy(originalIndexFile, outputPath, true);
