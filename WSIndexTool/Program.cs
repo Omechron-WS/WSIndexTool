@@ -43,8 +43,6 @@ public class Program
 			exit = true;
 		}
 		if (exit) return;
-
-		CompileIndexFile();
 	}
 
 	public static void CompileIndexFile()
