@@ -15,6 +15,8 @@ public class Program
 	{
 		ParseArgs(args);
 
+		originalIndexFile = "";
+		CompileIndexFile();
 		CompileIndexFile();
 	}
 

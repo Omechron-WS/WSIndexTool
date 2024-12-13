@@ -281,7 +281,7 @@ public class Pack : IDisposable
 		if (physicalPage != null)
 			return ResizePhysicalPage(physicalPage, length);
 
-		_stream.Position = (long)_header.Length + PackPhysicalPage.Stride / 2; // The last uint64 is not counted in header.length, apparently.
+		_stream.Position = (long)_header.Length + PackPhysicalPage.Stride / 2; // The last uint64 is not counted in header.length, apparently. // OR the length is 8 bytes short here!
 
 		var newPhysicalPage = PackPhysicalPage.Create(_stream, length);
 
@@ -292,7 +292,7 @@ public class Pack : IDisposable
 
 		_physicalPages.Add(newPhysicalPage.Position, newPhysicalPage);
 
-		_header.Length += length + PackPhysicalPage.Stride;
+		_header.Length = (ulong)_stream.Position;
 
 		return newPhysicalPage;
 	}
